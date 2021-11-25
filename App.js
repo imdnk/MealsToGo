@@ -9,10 +9,6 @@ import {
   Oswald_400Regular,
 } from '@expo-google-fonts/oswald';
 import {
-  useFonts as useFontDancing,
-  DancingScript_400Regular,
-} from '@expo-google-fonts/dancing-script';
-import {
   useFonts as useFontLato,
   Lato_400Regular,
 } from '@expo-google-fonts/lato';
@@ -32,9 +28,7 @@ export default function App() {
   const [Lato] = useFontLato({
     Lato_400Regular,
   });
-  const [Dancing] = useFontDancing({
-    DancingScript_400Regular,
-  });
+
   return (
     <ThemeProvider theme ={ theme }>
     <SafeArea >
