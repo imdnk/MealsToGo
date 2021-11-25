@@ -1,30 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { RestaurantsInfo } from '../components/restaurantsInfo';
+import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
+
+const SearchContainer = styled.View `
+      padding:${(props) => props.theme.space[3]};
+      background:${(props) => props.theme.colors.bg.primary};
+`;
+
+const RestaurantListContainer = styled.View`
+      flex: 1;
+      padding: ${(props) => props.theme.space[0]};
+      background : ${(props) => props.theme.colors.bg.secondary};
+`;
 
 export const RestaurantsScreen = () =>{
     return(
         <>
-        <View style = {styles.search}>
+        <SearchContainer>
     <Searchbar />
-      </View>
-      <View style = {styles.list}><RestaurantsInfo /></View>
+      </SearchContainer>
+      <RestaurantListContainer><RestaurantsInfoCard /></RestaurantListContainer>
         </>
     );
     
 }
-
-const styles = StyleSheet.create({
-    search:{
-      padding:16,
-      backgroundColor: '#cacfcb',
-    },
-    list:
-    {
-      flex: 1,
-      padding: 16,
-      backgroundColor: 'blue',
-    },
-  });
-  

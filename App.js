@@ -1,22 +1,47 @@
 import { StatusBar as EcpoStatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
-import { RestaurantsScreen } from './src/features/screens/restaurantsScreen';
+import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
+import {
+  useFonts as useFontOswald,
+  Oswald_400Regular,
+} from '@expo-google-fonts/oswald';
+import {
+  useFonts as useFontDancing,
+  DancingScript_400Regular,
+} from '@expo-google-fonts/dancing-script';
+import {
+  useFonts as useFontLato,
+  Lato_400Regular,
+} from '@expo-google-fonts/lato';
+import { theme } from './src/infrastructure/theme';
+import { RestaurantsScreen} from './src/features/screens/RestaurantsScreen';
+
+const SafeArea = styled.SafeAreaView`
+flex:1;
+`;
 
 export default function App() {
+
+  const [Oswald] = useFontOswald({
+    
+    Oswald_400Regular,
+  });
+  const [Lato] = useFontLato({
+    Lato_400Regular,
+  });
+  const [Dancing] = useFontDancing({
+    DancingScript_400Regular,
+  });
   return (
-    <>
-    <SafeAreaView style={styles.container}>
+    <ThemeProvider theme ={ theme }>
+    <SafeArea >
       <RestaurantsScreen/>
-    </SafeAreaView>
+    </SafeArea>
     <StatusBar style="auto" />
-    </>
+    </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
