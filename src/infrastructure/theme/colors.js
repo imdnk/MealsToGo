@@ -10,7 +10,7 @@ export const colors = {
       tertiary: "#F1F1F1",
       quaternary: "#FFFFFF",
       disabled: "#DEDEDE",
-      error: "#D0421B",
+      error: "##d01b21",
       success: "#138000",
     },
     bg: {
