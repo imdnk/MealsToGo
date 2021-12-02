@@ -25,6 +25,30 @@ const SafeArea = styled.SafeAreaView`
 flex:1;
 `;
 
+const createIconName = {
+  Restaurants : 'restaurant',
+  Maps : 'google-maps',
+  Settings : 'settings',
+};
+
+const createIconType = {
+  Restaurants : 'Ionic',
+  Maps : 'Metrial',
+  Settings : 'Ionic',
+};
+
+const createScreenOptions = ( { route }) => { 
+   const iconName = createIconName[route.name];
+   const iconType = createIconType[route.name];
+   return {
+    tabBarIcon: ({ size, color }) => (
+      (iconType === 'Ionic') ?
+      <Ionicons name={iconName} size={size} color={color} /> :
+      <MaterialCommunityIcons name={iconName} size={size} color={color} />
+    ),
+  };
+}
+
 export default function App() {
 
   const [Oswald] = useFontOswald({
@@ -40,29 +64,11 @@ export default function App() {
   const MyTab = () => {
     return (
       <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({  color, size }) => {
-        let iconName;
-        let iconType;
-
-          if (route.name === 'Restaurants') {
-            iconName = 'restaurant';
-            iconType = 'Ionic';
-          } else if (route.name === 'Settings') {
-            iconName = 'ios-settings';
-            iconType = 'Ionic';
-          } else if (route.name === 'Maps'){
-            iconName = 'google-maps';
-            iconType = 'Material';
-          }
-
-          // You can return any component that you like here!
-          return ((iconType === 'Ionic') ? <Ionicons name={iconName} size={size} color={color} /> :
-           <MaterialCommunityIcons name={iconName} size={size} color={color} />);
-        },
-        tabBarActiveTintColor: '#005e19',
-        tabBarInactiveTintColor: 'gray',
-      })}
+      screenOptions={createScreenOptions}
+      tabBarOptions={{
+        activeTintColor: "#005e19",
+        inactiveTintColor: "gray",
+      }}
       >
       <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
       <Tab.Screen name="Maps" component={MapScreen} />
