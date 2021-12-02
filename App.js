@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import {
   useFonts as useFontOswald,
@@ -37,7 +39,31 @@ export default function App() {
 
   const MyTab = () => {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({  color, size }) => {
+        let iconName;
+        let iconType;
+
+          if (route.name === 'Restaurants') {
+            iconName = 'restaurant';
+            iconType = 'Ionic';
+          } else if (route.name === 'Settings') {
+            iconName = 'ios-settings';
+            iconType = 'Ionic';
+          } else if (route.name === 'Maps'){
+            iconName = 'google-maps';
+            iconType = 'Material';
+          }
+
+          // You can return any component that you like here!
+          return ((iconType === 'Ionic') ? <Ionicons name={iconName} size={size} color={color} /> :
+           <MaterialCommunityIcons name={iconName} size={size} color={color} />);
+        },
+        tabBarActiveTintColor: '#005e19',
+        tabBarInactiveTintColor: 'gray',
+      })}
+      >
       <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
       <Tab.Screen name="Maps" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
