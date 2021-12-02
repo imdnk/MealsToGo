@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import {  FlatList, View, Text} from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
+
 
 const SearchContainer = styled.View `
       padding:${(props) => props.theme.space[3]};
@@ -16,12 +17,22 @@ const RestaurantListContainer = styled.View`
 `;
 
 export const RestaurantsScreen = () =>{
+     const RenderItem = () => {
+       <RestaurantsInfoCard />
+     };
+    
     return(
         <>
         <SearchContainer>
     <Searchbar />
       </SearchContainer>
-      <RestaurantListContainer><RestaurantsInfoCard /></RestaurantListContainer>
+      <RestaurantListContainer>    
+      <FlatList
+        data={[{name : 1}, {name : 2},{name : 3}, {name : 4},]}
+        renderItem={() => <RestaurantsInfoCard />}
+        keyExtractor={item => item.id}
+      />
+      </RestaurantListContainer>
         </>
     );
     

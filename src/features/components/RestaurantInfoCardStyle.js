@@ -16,7 +16,10 @@ padding :${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantCard = styled(Card)`
-    margin : 16px;
+    marginTop : ${(props) => props.theme.space[1]};
+    marginBottom : ${(props) => props.theme.space[1]};
+    marginLeft : ${(props) => props.theme.space[3]};
+    marginRight : ${(props) => props.theme.space[3]};
     background : ${(props) => props.theme.colors.bg.primary} ;
 `;
 
