@@ -20,6 +20,7 @@ import { theme } from './src/infrastructure/theme';
 import { RestaurantsScreen} from './src/features/screens/RestaurantsScreen';
 import { MapScreen  } from './src/features/screens/MapScreen';
 import { SettingsScreen } from './src/features/screens/SettingsScreen';
+import { RestaurantRequest } from './src/services/restaurants/restaurantsServices';
 
 const SafeArea = styled.SafeAreaView`
 flex:1;
@@ -48,6 +49,8 @@ const createScreenOptions = ( { route }) => {
     ),
   };
 }
+
+
 
 export default function App() {
 
