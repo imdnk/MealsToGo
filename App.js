@@ -20,7 +20,8 @@ import { theme } from './src/infrastructure/theme';
 import { RestaurantsScreen} from './src/features/screens/RestaurantsScreen';
 import { MapScreen  } from './src/features/screens/MapScreen';
 import { SettingsScreen } from './src/features/screens/SettingsScreen';
-import { RestaurantRequest } from './src/services/restaurants/restaurantsServices';
+//import { RestaurantRequest } from './src/services/restaurants/restaurantsServices';
+import { RestaurantsContextProvider } from './src/services/restaurants/restaurantsContext';
 
 const SafeArea = styled.SafeAreaView`
 flex:1;
@@ -82,11 +83,13 @@ export default function App() {
 
   return (
     <ThemeProvider theme ={ theme }>
+      <RestaurantsContextProvider>
       <NavigationContainer>
       <SafeArea >
       <MyTab />
     </SafeArea> 
       </NavigationContainer> 
+      </RestaurantsContextProvider>
     <StatusBar style="auto" />
     </ThemeProvider>
   );

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import {  FlatList, View, Text} from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
 
+import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
+import { RestaurantsContext } from '../../services/restaurants/restaurantsContext';
 
 const SearchContainer = styled.View `
       padding:${(props) => props.theme.space[3]};
@@ -20,6 +21,7 @@ export const RestaurantsScreen = () =>{
      const RenderItem = () => {
        <RestaurantsInfoCard />
      };
+     const restaurantsContextData = useContext(RestaurantsContext);
     
     return(
         <>
@@ -28,7 +30,7 @@ export const RestaurantsScreen = () =>{
       </SearchContainer>
       <RestaurantListContainer>    
       <FlatList
-        data={[{name : 1}, {name : 2},{name : 3}, {name : 4},]}
+        data={restaurantsContextData.restaurants}
         renderItem={() => <RestaurantsInfoCard />}
         keyExtractor={item => item.id}
       />
