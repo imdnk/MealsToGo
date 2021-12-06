@@ -14,8 +14,8 @@ export const restaurantsTransfrom = ({results = []}) => {
   const MappedData = results.map((restaurants) => {
     return {
       ...restaurants,
-      IsTemperiryClosed : restaurants.business_status === "CLOSED_TEMPERIRY",
-      IsOpenNow : restaurants.opening_hours && restaurants.opening_hours.open_now,
+      isTemperiryClosed : restaurants.business_status === "CLOSED_TEMPERIRY",
+      isOpenNow : restaurants.opening_hours && restaurants.opening_hours.open_now,
     };
   });
   return camelize(MappedData);

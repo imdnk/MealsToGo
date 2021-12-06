@@ -5,6 +5,7 @@ import { Searchbar } from 'react-native-paper';
 
 import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
 import { RestaurantsContext } from '../../services/restaurants/restaurantsContext';
+import { Spacer } from '../../components/SpaceComponent/Spacer';
 
 const SearchContainer = styled.View `
       padding:${(props) => props.theme.space[3]};
@@ -21,7 +22,7 @@ export const RestaurantsScreen = () =>{
      const RenderItem = () => {
        <RestaurantsInfoCard />
      };
-     const restaurantsContextData = useContext(RestaurantsContext);
+     const {restaurants, isLoading, error} = useContext(RestaurantsContext);
     
     return(
         <>
@@ -30,8 +31,14 @@ export const RestaurantsScreen = () =>{
       </SearchContainer>
       <RestaurantListContainer>    
       <FlatList
-        data={restaurantsContextData.restaurants}
-        renderItem={() => <RestaurantsInfoCard />}
+        data={restaurants}
+        renderItem={({ item }) => {
+          return (
+            <Spacer position="bottom" size="small">
+              <RestaurantsInfoCard restaurant={item} />
+            </Spacer>
+          );
+        }}
         keyExtractor={item => item.id}
       />
       </RestaurantListContainer>
