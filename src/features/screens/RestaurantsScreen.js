@@ -33,6 +33,7 @@ export const RestaurantsScreen = () =>{
       <FlatList
         data={restaurants}
         renderItem={({ item }) => {
+          //console.log(item);
           return (
             <Spacer position="bottom" size="small">
               <RestaurantsInfoCard restaurant={item} />
