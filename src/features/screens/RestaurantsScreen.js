@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import {  FlatList, View, Text} from 'react-native';
-import { Searchbar } from 'react-native-paper';
+import { Searchbar, ActivityIndicator, Colors } from 'react-native-paper';
 
 import { RestaurantsInfoCard } from '../components/RestaurantsInfoCard';
 import { RestaurantsContext } from '../../services/restaurants/restaurantsContext';
@@ -18,6 +18,12 @@ const RestaurantListContainer = styled.View`
       background : ${(props) => props.theme.colors.bg.secondary};
 `;
 
+const MyLoading = ( ) => {
+  return(
+    <ActivityIndicator animating={true} color={Colors.red800} />
+  )
+}
+
 export const RestaurantsScreen = () =>{
      const RenderItem = () => {
        <RestaurantsInfoCard />
@@ -25,6 +31,7 @@ export const RestaurantsScreen = () =>{
      const {restaurants, isLoading, error} = useContext(RestaurantsContext);
     
     return(
+      (isLoading === true ) ? MyLoading : 
         <>
         <SearchContainer>
     <Searchbar />

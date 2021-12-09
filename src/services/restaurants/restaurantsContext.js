@@ -1,6 +1,8 @@
 import React, { useState, createContext,  useEffect, useMemo } from "react";
 import {restaurantsRequest, restaurantsTransfrom} from "./restaurantsServices";
 
+
+
 export const RestaurantsContext = createContext();
 
 export const RestaurantsContextProvider = ({ children }) => {
@@ -22,7 +24,7 @@ export const RestaurantsContextProvider = ({ children }) => {
             setIsLoading(false);
             setError(err);
           });
-      }, 2000);
+      }, 3000);
     };
 
     useEffect(() => {
